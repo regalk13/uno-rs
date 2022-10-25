@@ -1,3 +1,3 @@
-# uno-rs
+# UNO Rs
 
-Uno online game using rust with yew and actix.
+UNO online game using rust with yew and actix.
