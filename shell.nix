@@ -1,17 +1,19 @@
-    # Configure the dependency of your shell
-    # Add support for clang for bindgen in godot-rust
-    { pkgs ? import <nixpkgs> {} }:
-    pkgs.mkShell.override { stdenv = pkgs.clangStdenv; } {
-        buildInputs = [
-            # Rust related dependencies
-            pkgs.rustup
-            pkgs.cargo
-            pkgs.rustfmt
-            pkgs.libclang
+let
+  mozilla = import (builtins.fetchTarball https://github.com/mozilla/nixpkgs-mozilla/archive/master.tar.gz);
+  nixpkgs = import <nixpkgs> { overlays = [ mozilla ]; };
+in
 
-        ];
+  with nixpkgs;
 
-        # For Rust language server and rust-analyzer
-        RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
+  mkShell {
+    buildInputs = [
+      clang # needed for bindgen
+      latest.rustChannels.nightly.rust
+      openssl
+      pkgconfig # needed for libdbus-sys to find the paths
+      dbus.dev
+    ];
 
-    }
+    LIBCLANG_PATH = "${llvmPackages.libclang}/lib";
+  }
+
