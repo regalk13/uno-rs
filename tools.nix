@@ -2,7 +2,8 @@ let rust-overlay = (import (builtins.fetchTarball "https://github.com/oxalica/ru
     
     change-rust-toolchain = self: super:
 rec {
-    rust-custom = self.rust-bin.stable."${super.rustc.version}".minimal.override {
+    # rust-custom = self.rust-bin.stable."${super.rustc.version}".minimal.override { <- for stable version
+    rust-custom = self.rust-bin.nightly.latest.minimal.override { # <- nightly version
         targets = ["wasm32-unknown-unknown"];
     };
     rustc = rust-custom;
