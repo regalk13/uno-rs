@@ -1,5 +1,7 @@
 use yew::prelude::*;
 
+mod hooks;
+
 #[function_component(Model)]
 fn model_functional() -> Html {
     let value = use_state(|| 0i64);
