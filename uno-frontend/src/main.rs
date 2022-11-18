@@ -1,6 +1,7 @@
 use yew::prelude::*;
 
 mod hooks;
+mod components;
 
 #[function_component(Model)]
 fn model_functional() -> Html {
