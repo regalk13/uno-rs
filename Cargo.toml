@@ -1,7 +1,8 @@
 [workspace]
 members = [
     "uno-core",
-    "uno-frontend"
+    "uno-frontend",
+    "uno-backend"
 ]
 
 [workspace.package]
