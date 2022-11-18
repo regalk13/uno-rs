@@ -1,12 +1,12 @@
 use crate::user::User;
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Message {
     sender: User,
     content: String,
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Chat {
     /// history of chat, the last messages are more recent
     /// than first messages

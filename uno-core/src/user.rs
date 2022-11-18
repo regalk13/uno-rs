@@ -12,7 +12,7 @@ pub enum Level {
 }
 
 /// User information
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct User {
     /// user's name
     name: String,
