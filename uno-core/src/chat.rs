@@ -49,10 +49,23 @@ impl Chat {
     pub fn delete(&mut self, index: usize) {
         self.history.remove(index);
     }
+
+    pub fn iter(&self) -> std::slice::Iter<'_, Message> {
+        self.history.iter()
+    }
 }
 
 impl AsRef<[Message]> for Chat {
     fn as_ref(&self) -> &[Message] {
         &self.history
+    }
+}
+
+impl IntoIterator for Chat {
+    type Item = Message;
+    type IntoIter = std::vec::IntoIter<Message>;
+
+    fn into_iter(self) -> Self::IntoIter {
+        self.history.into_iter()
     }
 }
