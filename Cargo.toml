@@ -1,12 +1,10 @@
-[package]
-name = "uno-rs"
+[workspace]
+members = [
+    "uno-core",
+    "uno-frontend"
+]
+
+[workspace.package]
 version = "0.1.0"
-authors = ["regalk"]
+authors = ["regalk", "A.L.I.C.E"]
 edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
-[dependencies]
-wasm-bindgen = "0.2.83"
-web-sys = "0.3.60"
-yew = "0.19"
