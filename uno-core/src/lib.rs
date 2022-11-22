@@ -1,3 +1,4 @@
+pub mod chat;
 pub mod user;
 
 pub fn add(left: usize, right: usize) -> usize {
