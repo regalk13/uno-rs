@@ -1,9 +1,12 @@
 use crate::user::User;
+use chrono::Utc;
 
 #[derive(Debug, Clone, PartialEq)]
 pub struct Message {
     sender: User,
     content: String,
+    /// UTC Timestamp of non-leap-milliseconds since January 1, 1970 UTC
+    create: i64,
 }
 
 #[derive(Debug, Clone, Default, PartialEq)]
@@ -15,7 +18,11 @@ pub struct Chat {
 
 impl Message {
     pub fn new(sender: User, content: String) -> Self {
-        Self { sender, content }
+        Self {
+            sender,
+            content,
+            create: Utc::now().timestamp_millis(),
+        }
     }
 
     pub fn sender(&self) -> &User {
@@ -24,6 +31,10 @@ impl Message {
 
     pub fn content(&self) -> &str {
         &self.content
+    }
+
+    pub fn create_timestamp(&self) -> i64 {
+        self.create
     }
 }
 
