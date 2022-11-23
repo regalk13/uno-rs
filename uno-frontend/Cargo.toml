@@ -11,3 +11,4 @@ uno-core = { path = "../uno-core/" }
 wasm-bindgen = "0.2.83"
 web-sys = "0.3.60"
 yew = "0.19"
+chrono = "0.4.23"
