@@ -8,3 +8,4 @@ edition.workspace = true
 
 [dependencies]
 chrono = '0.4.23'
+coarsetime = "0.1.22"

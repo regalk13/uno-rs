@@ -1,4 +1,5 @@
 pub mod chat;
+pub mod snowflake;
 pub mod user;
 
 pub fn add(left: usize, right: usize) -> usize {
