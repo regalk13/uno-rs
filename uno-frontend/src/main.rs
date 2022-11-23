@@ -1,6 +1,5 @@
 use yew::prelude::*;
 
-mod hooks;
 mod components;
 
 #[function_component(Model)]
