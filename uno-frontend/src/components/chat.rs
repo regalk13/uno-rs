@@ -172,7 +172,7 @@ fn message(
     let (date, hour) = {
         use chrono::{DateTime, Local, LocalResult, TimeZone, Utc};
 
-        let timestamp = message.create_timestamp();
+        let timestamp = message.id().timestamp() as i64;
         match Utc.timestamp_millis_opt(timestamp) {
             LocalResult::Single(utc) => {
                 let local: DateTime<Local> = DateTime::from(utc);

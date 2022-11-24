@@ -1,12 +1,11 @@
-use crate::user::User;
-use chrono::Utc;
+use crate::{snowflake::Snowflake, user::User};
 
 #[derive(Debug, Clone, PartialEq)]
 pub struct Message {
+    /// Message's unique snowflake
+    id: Snowflake,
     sender: User,
     content: String,
-    /// UTC Timestamp of non-leap-milliseconds since January 1, 1970 UTC
-    create: i64,
 }
 
 #[derive(Debug, Clone, Default, PartialEq)]
@@ -19,10 +18,22 @@ pub struct Chat {
 impl Message {
     pub fn new(sender: User, content: String) -> Self {
         Self {
+            id: Snowflake(0),
             sender,
             content,
-            create: Utc::now().timestamp_millis(),
         }
+    }
+
+    pub fn with_id(id: Snowflake, sender: User, content: String) -> Self {
+        Self {
+            id,
+            sender,
+            content,
+        }
+    }
+
+    pub fn id(&self) -> Snowflake {
+        self.id
     }
 
     pub fn sender(&self) -> &User {
@@ -31,10 +42,6 @@ impl Message {
 
     pub fn content(&self) -> &str {
         &self.content
-    }
-
-    pub fn create_timestamp(&self) -> i64 {
-        self.create
     }
 }
 
@@ -63,6 +70,12 @@ impl Chat {
 
     pub fn iter(&self) -> std::slice::Iter<'_, Message> {
         self.history.iter()
+    }
+}
+
+impl AsRef<Snowflake> for Message {
+    fn as_ref(&self) -> &Snowflake {
+        &self.id
     }
 }
 
