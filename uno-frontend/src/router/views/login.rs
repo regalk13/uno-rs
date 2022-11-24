@@ -12,7 +12,7 @@ pub fn login() -> Html {
             <label>{"Password"}</label>
             <input type="password" name="password" placeholder="password"/>
 
-            <input type="button" name="login"/>
+            <input type="submit" name="login" value="login"/>
         </form>
         </section>
     }
