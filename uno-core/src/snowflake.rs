@@ -83,6 +83,12 @@ impl Snowflake {
         ))
     }
 
+    /// Return snowflake timestamp as millis-seconds
+    pub fn timestamp(&self) -> u64 {
+        let timestamp = (self.0 & Snowflake::TIMESTAMP_MASK) >> Snowflake::TIMESTAMP_SHIFT;
+        timestamp + Snowflake::UNO_EPOCH
+    }
+
     /// Return raw Snowflake ID
     pub fn id(&self) -> u64 {
         self.0
