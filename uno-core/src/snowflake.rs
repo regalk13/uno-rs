@@ -22,7 +22,7 @@ impl Snowflake {
     pub const COUNTER_MASK: u64 = 0xFFF;
 
     /// Length of bits shift for timestamp
-    pub const TIMESTAMP_SHIFT: u64 = 42;
+    pub const TIMESTAMP_SHIFT: u64 = 22;
     /// Length of bits shift for process id
     pub const PROCESS_SHIFT: u64 = 12;
     /// Length of bits shift for internal counter
@@ -77,9 +77,9 @@ impl Snowflake {
         };
 
         Ok(Self(
-            timestamp << Snowflake::TIMESTAMP_SHIFT & Snowflake::TIMESTAMP_MASK
-                | process << Snowflake::PROCESS_SHIFT & Snowflake::PROCESS_MASK
-                | counter << Snowflake::COUNTER_SHIFT & Snowflake::COUNTER_MASK,
+            ((timestamp << Snowflake::TIMESTAMP_SHIFT) & Snowflake::TIMESTAMP_MASK)
+                | ((process << Snowflake::PROCESS_SHIFT) & Snowflake::PROCESS_MASK)
+                | ((counter << Snowflake::COUNTER_SHIFT) & Snowflake::COUNTER_MASK),
         ))
     }
 
