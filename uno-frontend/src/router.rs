@@ -12,7 +12,7 @@ pub enum Route {
     Login,
 }
 
-pub fn switch(route: &Route) -> Html {
+pub fn switch(route: Route) -> Html {
     match route {
         Route::Home => html! { <Home /> },
         Route::Login => html! { <Login /> },

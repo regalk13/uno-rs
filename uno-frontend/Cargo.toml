@@ -10,6 +10,6 @@ edition.workspace = true
 uno-core = { path = "../uno-core/" }
 wasm-bindgen = "0.2.83"
 web-sys = "0.3.60"
-yew = "0.19"
+yew = { version = "0.20", features = ["csr"] }
 chrono = "0.4.23"
-yew-router = "0.16"
+yew-router = "0.17"
