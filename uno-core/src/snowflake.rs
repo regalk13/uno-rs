@@ -1,5 +1,4 @@
 use coarsetime::Clock;
-use std::error::Error;
 use std::sync::{Mutex, RwLock};
 
 static PROCESS: RwLock<Option<u64>> = RwLock::new(None);
@@ -8,7 +7,7 @@ static COUNTER: Mutex<(u64, u64)> = Mutex::new((0, 0));
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 /// An unique Snowflake ID
-pub struct Snowflake(u64);
+pub struct Snowflake(pub u64);
 
 impl Snowflake {
     /// Epoch since November 23, 2022 0:00:00 UTC
@@ -31,19 +30,14 @@ impl Snowflake {
     /// Maximum length of internal counter
     pub const MAX_COUNTER: u64 = 4096;
 
-    /// Create a Snowflake from a given id
-    pub fn new(id: u64) -> Self {
-        Self(id)
-    }
-
     /// Generate an unique Snowflake along
     /// the whole process
-    pub fn generate() -> Result<Self, Box<dyn Error>> {
+    pub fn generate() -> Self {
         Clock::update();
 
         let timestamp = Clock::recent_since_epoch().as_millis() - Snowflake::UNO_EPOCH;
         let process = {
-            let lock = PROCESS.read()?;
+            let lock = PROCESS.read().unwrap();
             if let Some(id) = *lock {
                 id
             } else {
@@ -52,12 +46,12 @@ impl Snowflake {
                 std::mem::drop(lock);
 
                 let id = std::process::id() as u64;
-                *PROCESS.write()? = Some(id);
+                *PROCESS.write().unwrap() = Some(id);
                 id
             }
         };
         let counter = {
-            let (ref mut last, ref mut counter) = *COUNTER.lock()?;
+            let (ref mut last, ref mut counter) = *COUNTER.lock().unwrap();
             let now = Clock::recent_since_epoch().as_millis();
 
             if now != *last {
@@ -76,21 +70,16 @@ impl Snowflake {
             *counter - 1
         };
 
-        Ok(Self(
+        Self(
             ((timestamp << Snowflake::TIMESTAMP_SHIFT) & Snowflake::TIMESTAMP_MASK)
                 | ((process << Snowflake::PROCESS_SHIFT) & Snowflake::PROCESS_MASK)
                 | ((counter << Snowflake::COUNTER_SHIFT) & Snowflake::COUNTER_MASK),
-        ))
+        )
     }
 
     /// Return snowflake timestamp as millis-seconds
     pub fn timestamp(&self) -> u64 {
         let timestamp = (self.0 & Snowflake::TIMESTAMP_MASK) >> Snowflake::TIMESTAMP_SHIFT;
         timestamp + Snowflake::UNO_EPOCH
-    }
-
-    /// Return raw Snowflake ID
-    pub fn id(&self) -> u64 {
-        self.0
     }
 }
