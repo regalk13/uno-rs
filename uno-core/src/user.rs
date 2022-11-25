@@ -1,8 +1,9 @@
 use crate::snowflake::Snowflake;
+use serde::{Deserialize, Serialize};
 use std::fmt::Display;
 
 /// Different levels that an user can be
-#[derive(Debug, Clone, Copy, PartialEq)]
+#[derive(Debug, Clone, Copy, PartialEq, Serialize, Deserialize)]
 pub enum Level {
     /// Anonymous user
     Guess,
@@ -13,7 +14,7 @@ pub enum Level {
 }
 
 /// User information
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct User {
     /// User's unique snowflake
     id: Snowflake,

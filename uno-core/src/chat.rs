@@ -1,6 +1,8 @@
+use serde::{Deserialize, Serialize};
+
 use crate::{snowflake::Snowflake, user::User};
 
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct Message {
     /// Message's unique snowflake
     id: Snowflake,

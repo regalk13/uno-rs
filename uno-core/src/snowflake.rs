@@ -1,11 +1,12 @@
 use coarsetime::Clock;
+use serde::{Deserialize, Serialize};
 use std::sync::{Mutex, RwLock};
 
 static PROCESS: RwLock<Option<u64>> = RwLock::new(None);
 // (last time, counter)
 static COUNTER: Mutex<(u64, u64)> = Mutex::new((0, 0));
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize, Deserialize)]
 /// An unique Snowflake ID
 pub struct Snowflake(pub u64);
 
