@@ -91,6 +91,6 @@ command_arguments = ["Hello", "Trunk!"]
 stage = "build"
 command = "sh"
 # Linux users
-command_arguments = ["-c", "./bin/tailwindcss-linux-x64 -i ./styles/tailwind.css -o ./style.css"]
+command_arguments = ["-c", "./bin/tailwindcss-linux-x64 -i ./styles/tailwind.css -o $TRUNK_STAGING_DIR/style.css"]
 # Npm tailwind install
-# command_arguments = ["-c", "npx tailwindcss -i ./styles/tailwind.css -o ./style.css"]
+# command_arguments = ["-c", "npx tailwindcss -i ./styles/tailwind.css -o $TRUNK_STAGING_DIR/style.css"]
