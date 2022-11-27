@@ -1,4 +1,5 @@
 use std::ops::Deref;
+use web_sys::HtmlInputElement;
 
 use uno_core::user::LoginUser;
 use yew::prelude::*;
@@ -11,27 +12,28 @@ pub struct Props {
 #[function_component(LoginForm)]
 pub fn login_form(props: &Props) -> Html  {
     let user_info =  use_state(LoginUser::default);
-    
     let username_oninput = {
         let user_info = user_info.clone();
         Callback::from(move |username: InputEvent| {
-            let mut user = user_info.deref().clone();
-            user.username = username.value_of().as_string();
+            let input: HtmlInputElement = username.target_unchecked_into();
+            let mut user = (*user_info).clone(); 
+            user.username = input.value();
             user_info.set(user);
         })
     };
      
     let password_oninput = { 
         let user_info = user_info.clone();
-        Callback::from(move |password: InputEvent| {
-            let mut user = user_info.deref().clone();
-            user.password = password.value_of().as_string();
+        Callback::from(move |password: InputEvent| {             
+            let input: HtmlInputElement = password.target_unchecked_into();
+            let mut user = (*user_info).clone();
+            user.password = input.value();
             user_info.set(user);
         })
     };
     
     let onsubmit = {
-        let onsubmit_prop = props.onsubmit.clone();
+        let _onsubmit_prop = props.onsubmit.clone();
         let user_info = user_info;
         Callback::from(move |event: SubmitEvent| {
             event.prevent_default();

@@ -16,8 +16,8 @@ pub enum Level {
 /// User Authentication
 #[derive(Debug, Clone, PartialEq, Default, Serialize, Deserialize)]
 pub struct LoginUser {
-    pub username: Option<String>,
-    pub password: Option<String>,
+    pub username: String,
+    pub password: String,
 }
 
 /// User information

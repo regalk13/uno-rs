@@ -2,11 +2,15 @@ use yew::prelude::*;
 use crate::components::LoginForm;
 use uno_core::user::LoginUser;
 
+use log::info;
+use wasm_bindgen::JsValue;
+
 #[function_component(Login)]
 pub fn login() -> Html {
     let onsubmit = {
         Callback::from(move |user: LoginUser| {
-            return
+            let object = JsValue::from(user.username);
+            info!("Username: {}", object.as_string().unwrap());
         })
     }; 
 

@@ -13,4 +13,5 @@ web-sys = "0.3.60"
 yew = { version = "0.20", features = ["csr"] }
 chrono = "0.4.23"
 yew-router = "0.17"
-gloo-console = "0.2.3"
+log = "0.4.6"
+wasm-logger = "0.2.0"
