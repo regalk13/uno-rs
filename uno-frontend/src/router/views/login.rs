@@ -9,8 +9,13 @@ use wasm_bindgen::JsValue;
 pub fn login() -> Html {
     let onsubmit = {
         Callback::from(move |user: LoginUser| {
-            let object = JsValue::from(user.username);
-            info!("Username: {}", object.as_string().unwrap());
+            wasm_logger::init(wasm_logger::Config::default());
+            let username = user.username;
+            let password = user.password;
+            let object_user = JsValue::from(username);
+            let object_password = JsValue::from(password);
+            info!("Username: {}", object_user.as_string().unwrap());
+            info!("Password: {}", object_password.as_string().unwrap());
         })
     }; 
 

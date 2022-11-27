@@ -33,7 +33,7 @@ pub fn login_form(props: &Props) -> Html  {
     };
     
     let onsubmit = {
-        let _onsubmit_prop = props.onsubmit.clone();
+        let onsubmit_prop = props.onsubmit.clone();
         let user_info = user_info;
         Callback::from(move |event: SubmitEvent| {
             event.prevent_default();
