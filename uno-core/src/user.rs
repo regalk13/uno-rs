@@ -13,6 +13,13 @@ pub enum Level {
     System,
 }
 
+/// User Authentication
+#[derive(Debug, Clone, PartialEq, Default, Serialize, Deserialize)]
+pub struct LoginUser {
+    pub username: String,
+    pub password: String,
+}
+
 /// User information
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct User {
