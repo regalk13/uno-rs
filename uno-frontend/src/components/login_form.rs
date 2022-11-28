@@ -10,28 +10,28 @@ pub struct Props {
 }
 
 #[function_component(LoginForm)]
-pub fn login_form(props: &Props) -> Html  {
-    let user_info =  use_state(LoginUser::default);
+pub fn login_form(props: &Props) -> Html {
+    let user_info = use_state(LoginUser::default);
     let username_oninput = {
         let user_info = user_info.clone();
         Callback::from(move |username: InputEvent| {
             let input: HtmlInputElement = username.target_unchecked_into();
-            let mut user = (*user_info).clone(); 
+            let mut user = user_info.deref().clone();
             user.username = input.value();
             user_info.set(user);
         })
     };
-     
-    let password_oninput = { 
+
+    let password_oninput = {
         let user_info = user_info.clone();
-        Callback::from(move |password: InputEvent| {             
+        Callback::from(move |password: InputEvent| {
             let input: HtmlInputElement = password.target_unchecked_into();
-            let mut user = (*user_info).clone();
+            let mut user = user_info.deref().clone();
             user.password = input.value();
             user_info.set(user);
         })
     };
-    
+
     let onsubmit = {
         let onsubmit_prop = props.onsubmit.clone();
         let user_info = user_info;
@@ -41,7 +41,6 @@ pub fn login_form(props: &Props) -> Html  {
             onsubmit_prop.emit(user);
         })
     };
-
 
     html! {
         <div class="px-8 py-6 mt-4 text-left bg-white shadow-lg">
