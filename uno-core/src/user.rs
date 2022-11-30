@@ -13,10 +13,22 @@ pub enum Level {
     System,
 }
 
-/// User Authentication
+/// User Authentication this struct are used for forms
 #[derive(Debug, Clone, PartialEq, Default, Serialize, Deserialize)]
 pub struct LoginUser {
+    // usersname 
     pub username: String,
+    // user's password
+    pub password: String,
+}
+
+#[derive(Debug, Clone, PartialEq, Default, Serialize, Deserialize)]
+pub struct RegisterUser {
+    // usersname 
+    pub username: String,
+    // user's email
+    pub email: String,
+    // user's password
     pub password: String,
 }
 
