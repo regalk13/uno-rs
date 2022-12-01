@@ -1,25 +1,30 @@
-use actix_web::{get, App, HttpResponse, HttpRequest, Error, HttpServer};
+use actix_web::{get, App, HttpResponse, HttpRequest, HttpServer, Responder};
 use actix_files::Files;
 use tokio;
 use uno_frontend::{ServerApp, ServerAppProps};
 
 
 #[get("/{tail:.*}")]
-async fn render_app(req: HttpRequest) -> Result<HttpResponse, Error> {
+async fn render_app(req: HttpRequest) -> impl Responder {
     let index_html_s = tokio::fs::read_to_string("./dist/index.html")
     .await
     .expect("Failed to read index.html");
  
-    let server_props = ServerAppProps { url: req.uri().to_string().into(),  };
+    let url = req.uri().to_string();
+    
     let renderer = yew::ServerRenderer
         ::<ServerApp>
-        ::with_props(server_props);
+        ::with_props(move || ServerAppProps { url: url.into(),  }
+    );
 
     let rendered = renderer.render().await;    
-    Ok(HttpResponse::Ok()
-       .content_type("text/html; charset=utf-8")
-       .body(index_html_s.replace("<body>", &format!("<body>{}", rendered)))
-    )
+    let rendered = index_html_s.replace("<body>", &format!("<body>{}", &rendered));
+
+    let resp = HttpResponse::Ok()
+       .content_type("text/html")
+       .body(rendered);
+
+    return resp;
 }
 
 
