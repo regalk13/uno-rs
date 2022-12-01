@@ -19,5 +19,5 @@ fn main() {
     // Comment this line if you don't need logs
     wasm_logger::init(wasm_logger::Config::default());
     // Render main app
-    yew::Renderer::<App>::new().render();
+    yew::Renderer::<App>::new().hydrate();
 }
