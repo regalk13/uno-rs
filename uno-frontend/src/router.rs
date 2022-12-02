@@ -18,6 +18,6 @@ pub fn switch(route: Route) -> Html {
     match route {
         Route::Home => html! { <Home /> },
         Route::Login => html! { <Login /> },
-        Route::Register => html! { <Register /> }
+        Route::Register => html! { <Register /> },
     }
 }

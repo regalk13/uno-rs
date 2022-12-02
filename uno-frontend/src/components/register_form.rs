@@ -12,7 +12,7 @@ pub struct Props {
 #[function_component(RegisterForm)]
 pub fn register_form(props: &Props) -> Html {
     let user_info = use_state(RegisterUser::default);
-    
+
     let email_oninput = {
         let user_info = user_info.clone();
         Callback::from(move |email: InputEvent| {
@@ -22,7 +22,7 @@ pub fn register_form(props: &Props) -> Html {
             user_info.set(user);
         })
     };
-    
+
     let username_oninput = {
         let user_info = user_info.clone();
         Callback::from(move |username: InputEvent| {
