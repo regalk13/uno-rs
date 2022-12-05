@@ -1,8 +1,7 @@
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="https://user-images.githubusercontent.com/72028266/205465535-beeedf0b-24fb-4c88-9c53-c8312c332b55.png" alt="Logo" width="140" height="100">
-  </a>
+  <img src="https://user-images.githubusercontent.com/72028266/205465535-beeedf0b-24fb-4c88-9c53-c8312c332b55.png" alt="Logo" width="140" height="100">
+  
 
   <h3 align="center">Uno rust</h3>
 
