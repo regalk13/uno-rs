@@ -27,7 +27,7 @@ As you can see this project is written in Rust, both in frontend using [web asse
 ### UI
 
 - [ ] Home page view
-- [ ] Navbar component
+- [x] Navbar component
 - [ ] Room view
 - [ ] Profile view
 
