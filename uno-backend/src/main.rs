@@ -42,6 +42,9 @@ async fn main() -> std::io::Result<()> {
                         .service(
                             Files::new("/dist", "./dist")
                         )
+                        .service(
+                            Files::new("/assets", "./dist/assets/")
+                        )
                         // Start the service of the render app
                         .service(render_app)
     })
