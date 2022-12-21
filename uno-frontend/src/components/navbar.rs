@@ -4,9 +4,9 @@ use yew::prelude::*;
 pub fn navbar() -> Html {
     html! {
         <nav class="p-5 bg-white shadow md:flex md:items-center md:justify-between">
-            <div>
-                <img src="assets/logo.png" alt="logo" />
-                <span class="text-2xl font-bold 2cursor-pointer">
+            <div class="md:flex md:items-center">
+                <img class="mr-5" src="assets/logo.png" alt="logo" />
+                <span class="text-3xl font-bold cursor-pointer">
                     { "Uno Rust" }
                 </span>
             </div>
