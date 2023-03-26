@@ -9,7 +9,21 @@ edition.workspace = true
 [dependencies]
 uno-core = { path = "../uno-core/" }
 uno-frontend = { path = "../uno-frontend" }
-yew = { version="0.20", features = ["ssr", "hydration"] }
-actix-web = "4.2.1"
+leptos = "*"
+leptos_actix = { version = "*", optional = true }
+leptos_router = "*"
+leptos_meta = "*"
+actix-web = { version = "4.2.1", optional = true }
 tokio = { version = "1.22.0", features = ["full"] }
-actix-files = "0.6.2"
+actix-files = { version = "0.6.2", optional = true }
+
+[features]
+hydrate = ["leptos/hydrate", "leptos_meta/hydrate",  "leptos_router/hydrate"]
+ssr = [
+  "dep:actix-files",
+  "dep:actix-web",
+  "dep:leptos_actix",
+  "leptos/ssr",
+  "leptos_meta/ssr",
+  "leptos_router/ssr",
+]
