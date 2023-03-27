@@ -6,3 +6,10 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+leptos = { git = "https://github.com/gbj/leptos", default-features = false }
+leptos_axum = { git = "https://github.com/gbj/leptos", default-features = false, optional = true }
+leptos_config = { git = "https://github.com/gbj/leptos", default-features = false}
+leptos_meta = { git = "https://github.com/gbj/leptos",  default-features = false }
+leptos_router = { git = "https://github.com/gbj/leptos", default-features = false }
+axum = { version = "*", optional = true}
+cfg-if = "*"
