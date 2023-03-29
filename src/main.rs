@@ -4,7 +4,6 @@ use leptos::*;
 cfg_if! {
    if #[cfg(feature = "ssr")]  {
         use axum::{
-            routing::{get, post},
             extract::Extension,
             Router,
         };
@@ -13,7 +12,6 @@ cfg_if! {
         use std::sync::Arc;
         use uno_rs::app::*;
         use uno_rs::file::file_handler;
-        use uno_rs::routes::todo::db;
 
         #[tokio::main]
         async fn main() {
@@ -38,7 +36,7 @@ cfg_if! {
 
 else {
         pub fn main() {
-            println!("ERROR: CSR function is not yet implemented, use SSR instead ;)");
+            println!("ERROR: CSR option is not yet implemented, use SSR instead ;)");
         }
     }
 }

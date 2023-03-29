@@ -9,5 +9,4 @@ pub fn Home(cx: Scope) -> impl IntoView {
             <NavBar />
         </section>
     }
-
 }
