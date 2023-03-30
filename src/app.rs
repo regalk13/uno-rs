@@ -22,6 +22,10 @@ pub fn App(cx: Scope) -> impl IntoView {
                             cx,
                             <Home/>
                         }/>
+                        <Route path="/test" view=|cx| view! {
+                            cx,
+                            <Todos/>
+                        }/>
                     </Routes>
                     </div>
                 </main>
