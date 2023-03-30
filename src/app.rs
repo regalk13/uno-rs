@@ -11,12 +11,9 @@ pub fn App(cx: Scope) -> impl IntoView {
         cx,
         <div>
             <Router>
-                <header>
-                    <h1>"My Tasks"</h1>
-                </header>
-                <main>
+               <main>
                 <div>
-                <Title text="Leptos Heavy Metal Stack"/>
+                <Title text="UNO Rust"/>
                     <Routes>
                         <Route path="" view=|cx| view! {
                             cx,
