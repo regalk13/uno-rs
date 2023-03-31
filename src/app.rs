@@ -1,4 +1,5 @@
 use crate::routes::todo::*;
+use crate::routes::home::*;
 use leptos::*;
 use leptos_meta::*;
 use leptos_router::*;
@@ -19,7 +20,7 @@ pub fn App(cx: Scope) -> impl IntoView {
                     <Routes>
                         <Route path="" view=|cx| view! {
                             cx,
-                            <Todos/>
+                            <Home/>
                         }/>
                     </Routes>
                     </div>
