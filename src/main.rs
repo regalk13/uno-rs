@@ -21,7 +21,7 @@ cfg_if! {
             let leptos_options = conf.leptos_options;
             let addr = leptos_options.site_addr.clone();
             let routes = generate_route_list(|cx| view! { cx, <App/> }).await;
-            println!("serving at {addr}");
+            println!("INFO: Serving at {addr}");
 
             let app = Router::new()
                 .leptos_routes(leptos_options.clone(), routes, |cx| view! { cx, <App/> })
@@ -37,14 +37,8 @@ cfg_if! {
 
 
 else {
-        use uno_rs::app::*;
         pub fn main() {
-            console_error_panic_hook::set_once();
-            _ = console_log::init_with_level(log::Level::Debug);
-            console_error_panic_hook::set_once();
-            mount_to_body(|cx| {
-                view! { cx, <App/> }
-            });
+            println!("ERROR: CSR function is not yet implemented, use SSR instead ;)");
         }
     }
 }
