@@ -7,6 +7,7 @@ pub fn NavBar(cx: Scope) -> impl IntoView {
         <nav class="p-5 bg-white shadow md:flex md:items-center md:justify-between">
             <div class="md:flex md:items-center">
                 <img class="mr-5" style="width: 100px; height: 100px;" src="main-logo.png" alt="logo" />
+
                 <span class="text-3xl font-bold cursor-pointer">
                     { "Uno Rust" }
                 </span>
@@ -24,7 +25,7 @@ pub fn NavBar(cx: Scope) -> impl IntoView {
                     <button class="px-8 py-2 mx-3 text-lg font-bold bg-[#b1b2b5] text-[#3d3a3a] rounded-lg hover:bg-[#3d3a3a] hover:text-white duration-500">
                         { "Sign up" }
                     </button>
-    
+
                     </a>
                 </li>
                 <li>
