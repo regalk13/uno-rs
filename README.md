@@ -8,7 +8,7 @@
   <p align="center">
     The famous Uno card game made in Rust programming language!
     <br>
-    Using <a href="https://yew.rs/">Yew</a>(Frontend) + <a href="https://actix.rs/">Actix</a>(Backend) frameworks for running it on a browser.   
+    Using <a href="https://github.com/leptos-rs/leptos">Leptos</a>(Frontend) + <a href="https://github.com/tokio-rs/axum">Axum</a>(Backend) frameworks for running it on a browser.   
 
   </p>
 </div>
