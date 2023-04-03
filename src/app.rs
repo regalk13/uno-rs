@@ -9,6 +9,7 @@ pub fn App(cx: Scope) -> impl IntoView {
     view! {
         cx,
         <div>
+            <Html lang="en"/>
             <Stylesheet id="leptos" href="/pkg/uno_rs.css"/>
             <Router>
                <main>

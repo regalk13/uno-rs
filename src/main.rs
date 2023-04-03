@@ -1,5 +1,6 @@
 use cfg_if::cfg_if;
 use leptos::*;
+use tower_http::compression::CompressionLayer;
 
 cfg_if! {
    if #[cfg(feature = "ssr")]  {
@@ -24,6 +25,7 @@ cfg_if! {
             let app = Router::new()
                 .leptos_routes(leptos_options.clone(), routes, |cx| view! { cx, <App/> })
                 .fallback(file_handler)
+                .layer(CompressionLayer::new())
                 .layer(Extension(Arc::new(leptos_options)));
 
             axum::Server::bind(&addr)
