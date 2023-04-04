@@ -17,12 +17,13 @@ if #[cfg(feature = "ssr")] {
         let options = &*options;
         let root = options.site_root.clone();
         let res = get_static_file(uri.clone(), &root).await?;
-
+        
         match res.status() {
             StatusCode::OK => Ok(res),
             _ => Err((res.status(), "File Not Found".to_string()))
         }
     }
+
 
     async fn get_static_file(uri: Uri, root: &str) -> Result<Response<BoxBody>, (StatusCode, String)> {
         let req = Request::builder().uri(uri.clone()).body(Body::empty()).unwrap();

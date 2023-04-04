@@ -1,4 +1,8 @@
 use crate::routes::home::*;
+use crate::routes::login::*;
+use crate::routes::register::*;
+
+
 use leptos::*;
 use leptos_meta::*;
 use leptos_router::*;
@@ -19,6 +23,14 @@ pub fn App(cx: Scope) -> impl IntoView {
                         <Route path="" view=|cx| view! {
                             cx,
                             <Home/>
+                        }/>
+                        <Route path="/login" view=|cx| view! {
+                            cx,
+                            <Login/>
+                        }/>
+                        <Route path="/register" view=|cx| view! {
+                            cx,
+                            <Register/>
                         }/>
                  </Routes>
                     </div>
