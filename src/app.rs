@@ -14,6 +14,7 @@ pub fn App(cx: Scope) -> impl IntoView {
         cx,
         <div>
             <Html lang="en"/>
+            <Meta name="description" content="Lets play the popular Uno card game for free in your web browser. Create a room game and invite your friends!"/>
             <Stylesheet id="leptos" href="/pkg/uno_rs.css"/>
             <Router>
                <main>
