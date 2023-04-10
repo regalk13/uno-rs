@@ -27,14 +27,13 @@ cfg_if! {
                 .fallback(file_handler)
                 .layer(CompressionLayer::new())
                 .layer(Extension(Arc::new(leptos_options)));
-
+	    
             axum::Server::bind(&addr)
                 .serve(app.into_make_service())
                 .await
                 .unwrap();
-        }
-   }
-
+	}
+   }	    
 
 else {
         pub fn main() {
